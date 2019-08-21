@@ -2,7 +2,7 @@
   "name": "module-3",
   "version": "1.0.0",
   "description": "> TODO: description",
-  "author": "ADS\t_wangh <huadong.wang@autodesk.com>",
+  "author": "oukatou <huadong.wang@autodesk.com>",
   "homepage": "",
   "license": "ISC",
   "main": "lib/module-3.js",
