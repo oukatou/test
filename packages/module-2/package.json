@@ -1,7 +1,7 @@
 {
   "name": "module-2",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,5 @@
     "node": "^12.8.1",
     "prettier": "^1.18.2",
     "react": "^16.9.0"
-  },
-  "dependencies": {
   }
 }
