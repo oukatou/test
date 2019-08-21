@@ -3,6 +3,7 @@
   "private": true,
   "version": "1.0.1",
   "description": "",
+  "author": "t_wangh",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
