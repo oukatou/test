@@ -1,0 +1,21 @@
+{
+  "name": "module-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^6.2.0",
+    "lerna": "^3.16.4",
+    "module-2": "^1.0.0",
+    "node": "^12.8.1",
+    "prettier": "^1.18.2",
+    "react": "^16.9.0"
+  },
+  "dependencies": {
+  }
+}
