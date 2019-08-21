@@ -2,6 +2,7 @@
   "name": "module-whd",
   "version": "1.0.2",
   "description": "1",
+  "author": "t_wangh",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
