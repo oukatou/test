@@ -9,6 +9,9 @@
   "files": [
     "build/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/oukatou/test.git"
@@ -29,5 +32,6 @@
   },
   "peerDependencies": {
     "react": "^16.3.2"
-  }
+  },
+  "gitHead": "142f459eaac3ada776c54687bb1ac098e09e7294"
 }

@@ -4,7 +4,11 @@
     "scripts": {
         "build": "scripts-build"
     },
+    "publishConfig": {
+        "access": "public"
+    },
     "dependencies": {
         "@whd/scripts": "^1.0.0"
-    }
+    },
+    "gitHead": "142f459eaac3ada776c54687bb1ac098e09e7294"
 }
