@@ -1,0 +1,10 @@
+{
+    "name": "@whd/behavior",
+    "version": "1.0.0",
+    "scripts":{
+        "build": "scripts-build"
+    },
+    "dependencies": {
+        "@whd/scripts": "^1.0.0"
+    }
+}
