@@ -1,6 +1,6 @@
 {
   "name": "@whd/input",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a custom input component built by react",
   "author": "whd <530754967@qq.com>",
   "homepage": "https://github.com/oukatou/test#readme",
@@ -21,7 +21,7 @@
     "url": "https://github.com/oukatou/test/issues"
   },
   "dependencies": {
-    "@whd/behavior": "^1.0.0",
+    "@whd/behavior": "^1.0.1",
     "emotion": "^10.0.0"
   },
   "devDependencies": {
