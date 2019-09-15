@@ -4,7 +4,7 @@
   "description": "a custom input component built by react",
   "author": "whd <530754967@qq.com>",
   "homepage": "https://github.com/oukatou/test#readme",
-  "license": "ISC",
+  "license": "MIT",
   "main": "build/index.js",
   "files": [
     "build/*"
