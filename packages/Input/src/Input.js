@@ -1,7 +1,7 @@
 import React, {forwardRef} from 'react'
 import {css} from 'emotion'
 import stylesheet from './Input.stylesheet'
-import ControlBehavior from '@whd/behavior/ControlBehavior'
+import ControlBehavior from 'whd-behavior/ControlBehavior'
 
 const Input = (props, ref)=>{
         let {

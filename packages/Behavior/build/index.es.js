@@ -289,4 +289,4 @@ ControlBehavior.__docgenInfo = {
   "displayName": "ControlBehavior"
 };
 
-export default ControlBehavior;
+export { ControlBehavior, FocusBehavior, HoverBehavior, PressedBehavior };

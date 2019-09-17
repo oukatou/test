@@ -1,0 +1,41 @@
+{
+  "name": "whd-scripts",
+  "private": true,
+  "version": "1.0.0",
+  "description": "> TODO: description",
+  "author": "whd <530754967@qq.com>",
+  "homepage": "https://github.com/oukatou/test#readme",
+  "license": "MIT",
+  "main": "lib/scripts.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "bin": {
+    "scripts-build": "build.js"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oukatou/test.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: run tests from root\" && exit 1"
+  },
+  "bugs": {
+    "url": "https://github.com/oukatou/test/issues"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-plugin-react-docgen": "^1.8.1",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "rollup": "^1.21.2",
+    "rollup-plugin-babel": "^3.0.3"
+  }
+}
