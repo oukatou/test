@@ -1,5 +1,5 @@
 {
-  "name": "@whd/input",
+  "name": "whd-input",
   "version": "1.0.2",
   "description": "a custom input component built by react",
   "author": "whd <530754967@qq.com>",

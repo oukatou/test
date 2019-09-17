@@ -1,5 +1,5 @@
 {
-    "name": "@whd/behavior",
+    "name": "whd-behavior",
     "version": "1.0.2",
     "scripts": {
         "build": "scripts-build"
