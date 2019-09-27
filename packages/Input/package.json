@@ -1,6 +1,6 @@
 {
   "name": "whd-input",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "a custom input component built by react",
   "author": "whd <530754967@qq.com>",
   "homepage": "https://github.com/oukatou/test#readme",
@@ -22,10 +22,10 @@
   },
   "dependencies": {
     "emotion": "^10.0.0",
-    "whd-behavior": "^1.0.3"
+    "whd-behavior": "^1.0.4"
   },
   "devDependencies": {
-    "whd-scripts": "^1.0.1"
+    "whd-scripts": "^1.0.2"
   },
   "peerDependencies": {
     "react": "^16.3.2"

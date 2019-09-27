@@ -1,6 +1,6 @@
 {
     "name": "whd-behavior",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "main": "build/index.js",
     "files": [
         "build/*"
@@ -9,6 +9,6 @@
         "build": "scripts-build"
     },
     "devDependencies": {
-        "whd-scripts": "^1.0.1"
+        "whd-scripts": "^1.0.2"
     }
 }
