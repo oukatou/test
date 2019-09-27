@@ -6,6 +6,7 @@
   "homepage": "https://github.com/oukatou/test#readme",
   "license": "MIT",
   "main": "build/index.js",
+  "module": "build/index.es.js",
   "files": [
     "build/*"
   ],

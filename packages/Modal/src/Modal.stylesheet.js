@@ -51,7 +51,7 @@ function stylesheet(props){
         },
         body:{
             padding: '20px',
-            overflow: 'scroll',
+            overflow: 'auto',
             maxHeight: '250px',
         },
         close:{
