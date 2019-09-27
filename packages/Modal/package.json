@@ -1,0 +1,38 @@
+{
+    "name": "whd-modal",
+    "version": "1.0.0",
+    "description": "a modal component built by react",
+    "author": "whd <530754967@qq.com>",
+    "homepage": "https://github.com/oukatou/test#readme",
+    "license": "MIT",
+    "main": "build/index.js",
+    "module": "build/index.es.js",
+    "files": [
+      "build/*"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/oukatou/test.git"
+    },
+    "scripts": {
+      "build": "scripts-build",
+      "test": "echo \"Error: run tests from root\" && exit 1"
+    },
+    "bugs": {
+      "url": "https://github.com/oukatou/test/issues"
+    },
+    "dependencies": {
+      "emotion": "^10.0.0"
+    },
+    "devDependencies": {
+      "whd-scripts": "^1.0.1"
+    },
+    "peerDependencies": {
+      "react": "^16.3.2"
+    },
+    "keywords": [
+      "modal",
+      "react"
+    ]
+  }
+  
