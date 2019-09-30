@@ -6,6 +6,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
+var PropTypes = _interopDefault(require('prop-types'));
 var emotion = require('emotion');
 
 var _templateObject = _taggedTemplateLiteral(['\n                0% {top: 180px}\n                100% {top: 155px}\n                '], ['\n                0% {top: 180px}\n                100% {top: 155px}\n                ']),
@@ -16,22 +17,16 @@ function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defi
 var closing = emotion.keyframes(_templateObject);
 var opening = emotion.keyframes(_templateObject2);
 function stylesheet(props) {
-    var open = props.open,
-        mask = props.mask;
+    var open = props.open;
 
     return {
-        overlay: mask ? {
+        overlay: open ? {
             position: 'fixed',
             left: '0',
             right: '0',
             bottom: '0',
             top: '0',
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            opacity: open ? 1 : 0,
-            transition: 'all ease 0.2s',
-            pointerEvents: open ? 'visible' : 'none',
-            transitionDelay: open ? '0s' : '0.3s',
-            zIndex: 1000
+            zIndex: 1040
         } : {},
         content: {
             border: '1px solid #ccc',
@@ -46,7 +41,7 @@ function stylesheet(props) {
             left: '50%',
             top: '180px',
             transform: 'translateX(-50%)',
-            transition: 'opacity ease 0.4s',
+            transition: 'opacity ease 0.3s',
             animation: open ? opening + ' 0.4s' : closing + ' 0.4s',
             outline: 0
         },
@@ -68,8 +63,28 @@ function stylesheet(props) {
             fontWeight: '200',
             lineHeight: '17px',
             fontSize: '35px'
+        },
+        mask: {
+            position: 'fixed',
+            left: '0',
+            right: '0',
+            bottom: '0',
+            top: '0',
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            opacity: open ? 1 : 0,
+            transition: 'all ease 0.2s',
+            pointerEvents: open ? 'visible' : 'none',
+            transitionDelay: open ? '0s' : '0.2s',
+            zIndex: 1030
         }
     };
+}
+
+function customClassNames(cls, name) {
+    return cls.split(' ').reduce(function (res, cur) {
+        res && (res += ' ');
+        return res + cur + '__' + name;
+    }, '');
 }
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -79,13 +94,6 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-function customClassNames(cls, name) {
-    return cls.split(' ').reduce(function (res, cur) {
-        res && (res += ' ');
-        return res + cur + '__' + name;
-    }, '');
-}
 
 var ModalPresenter = function (_Component) {
     _inherits(ModalPresenter, _Component);
@@ -117,9 +125,14 @@ var ModalPresenter = function (_Component) {
     }
 
     _createClass(ModalPresenter, [{
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            this.contentRef.focus();
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            document.body.addEventListener('keyup', this.handleKeyup);
+        }
+    }, {
+        key: 'componentWillUnmount',
+        value: function componentWillUnmount() {
+            document.body.removeEventListener('keyup', this.handleKeyup);
         }
     }, {
         key: 'render',
@@ -130,22 +143,22 @@ var ModalPresenter = function (_Component) {
                 className = _props.className,
                 headerChildren = _props.headerChildren,
                 onClose = _props.onClose,
-                mask = _props.mask,
-                keyboard = _props.keyboard,
-                open = _props.open;
+                open = _props.open,
+                backClosable = _props.backClosable;
 
             var overlayClassName = className && customClassNames(className, 'overlay');
             var contentClassName = className && customClassNames(className, 'content');
             var headerClassName = className && customClassNames(className, 'header');
             var closeClassName = className && customClassNames(className, 'close');
             var bodyClassName = className && customClassNames(className, 'body');
-            var styles = stylesheet({ open: open, mask: mask });
+            var styles = stylesheet({ open: open });
             return React__default.createElement(
                 'div',
                 {
                     ref: this.refOverlay,
                     className: emotion.cx(emotion.css(styles.overlay), overlayClassName),
-                    onClick: keyboard ? this.handleOverlayClick : null
+                    onClick: backClosable ? this.handleOverlayClick : null
+
                 },
                 React__default.createElement(
                     'article',
@@ -181,38 +194,9 @@ var ModalPresenter = function (_Component) {
 
     return ModalPresenter;
 }(React.Component);
-
-ModalPresenter.defaultProps = {
-    mask: true,
-    keyboard: true,
-    open: false
-};
 ModalPresenter.__docgenInfo = {
     'description': '',
-    'displayName': 'ModalPresenter',
-    'props': {
-        'mask': {
-            'defaultValue': {
-                'value': 'true',
-                'computed': false
-            },
-            'required': false
-        },
-        'keyboard': {
-            'defaultValue': {
-                'value': 'true',
-                'computed': false
-            },
-            'required': false
-        },
-        'open': {
-            'defaultValue': {
-                'value': 'false',
-                'computed': false
-            },
-            'required': false
-        }
-    }
+    'displayName': 'ModalPresenter'
 };
 
 function Modal(props) {
@@ -223,8 +207,12 @@ function Modal(props) {
         className = props.className,
         headerChildren = props.headerChildren,
         mask = props.mask,
-        maskClosable = props.maskClosable,
+        backClosable = props.backClosable,
         keyboard = props.keyboard;
+
+
+    var maskClassName = className && customClassNames(className, 'mask');
+    var styles = stylesheet({ open: open });
 
     return React__default.createElement(
         'div',
@@ -237,17 +225,116 @@ function Modal(props) {
                 onClose: onClose,
                 open: open,
                 headerChildren: headerChildren,
-                mask: mask,
-                maskClosable: maskClosable,
+                backClosable: backClosable,
                 keyboard: keyboard
             },
             children
-        )
+        ),
+        mask && React__default.createElement('div', { className: emotion.cx(emotion.css(styles.mask), maskClassName) })
     );
 }
+
+Modal.propTypes = {
+    children: PropTypes.node,
+    mask: PropTypes.bool,
+    keyboard: PropTypes.bool,
+    open: PropTypes.bool,
+    backClosable: PropTypes.bool,
+    onClose: PropTypes.func,
+    title: PropTypes.string,
+    className: PropTypes.string,
+    headerChildren: PropTypes.node
+};
+Modal.defaultProps = {
+    mask: true,
+    keyboard: true,
+    open: false,
+    backClosable: true
+};
 Modal.__docgenInfo = {
     'description': '',
-    'displayName': 'Modal'
+    'displayName': 'Modal',
+    'props': {
+        'children': {
+            'type': {
+                'name': 'node'
+            },
+            'required': false,
+            'description': ''
+        },
+        'mask': {
+            'type': {
+                'name': 'bool'
+            },
+            'required': false,
+            'description': '',
+            'defaultValue': {
+                'value': 'true',
+                'computed': false
+            }
+        },
+        'keyboard': {
+            'type': {
+                'name': 'bool'
+            },
+            'required': false,
+            'description': '',
+            'defaultValue': {
+                'value': 'true',
+                'computed': false
+            }
+        },
+        'open': {
+            'type': {
+                'name': 'bool'
+            },
+            'required': false,
+            'description': '',
+            'defaultValue': {
+                'value': 'false',
+                'computed': false
+            }
+        },
+        'backClosable': {
+            'type': {
+                'name': 'bool'
+            },
+            'required': false,
+            'description': '',
+            'defaultValue': {
+                'value': 'true',
+                'computed': false
+            }
+        },
+        'onClose': {
+            'type': {
+                'name': 'func'
+            },
+            'required': false,
+            'description': ''
+        },
+        'title': {
+            'type': {
+                'name': 'string'
+            },
+            'required': false,
+            'description': ''
+        },
+        'className': {
+            'type': {
+                'name': 'string'
+            },
+            'required': false,
+            'description': ''
+        },
+        'headerChildren': {
+            'type': {
+                'name': 'node'
+            },
+            'required': false,
+            'description': ''
+        }
+    }
 };
 
 exports.default = Modal;
