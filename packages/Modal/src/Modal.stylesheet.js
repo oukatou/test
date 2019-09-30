@@ -9,20 +9,15 @@ const opening = keyframes`
                 100% {top: 180px}
                 `              
 function stylesheet(props){
-    const {open,mask} = props
+    const {open} = props
     return {
-        overlay: mask ? {
+        overlay: open ? {
             position: 'fixed',
             left: '0',
             right: '0',
             bottom: '0',
             top: '0',
-            backgroundColor: 'rgba(0,0,0,0.4)',
-            opacity: open ? 1 : 0,
-            transition: 'all ease 0.2s',
-            pointerEvents: open ? 'visible' : 'none',
-            transitionDelay: open ? '0s' : '0.3s',
-            zIndex: 1000
+            zIndex: 1040
         } : {},
         content:{
             border: '1px solid #ccc',
@@ -37,7 +32,7 @@ function stylesheet(props){
             left: '50%',
             top: '180px',
             transform: 'translateX(-50%)',
-            transition: 'opacity ease 0.4s',
+            transition: 'opacity ease 0.3s',
             animation: open ? `${opening} 0.4s` : `${closing} 0.4s`,
             outline: 0
         },
@@ -59,7 +54,20 @@ function stylesheet(props){
             fontWeight: '200',
             lineHeight: '17px',
             fontSize: '35px'
-        }
+        },
+        mask: {
+            position: 'fixed',
+            left: '0',
+            right: '0',
+            bottom: '0',
+            top: '0',
+            backgroundColor: 'rgba(0,0,0,0.4)',
+            opacity: open ? 1 : 0,
+            transition: 'all ease 0.2s',
+            pointerEvents: open ? 'visible' : 'none',
+            transitionDelay: open ? '0s' : '0.2s',
+            zIndex: 1030
+        },
     }
 }
 

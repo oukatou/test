@@ -1,19 +1,9 @@
 import React,{Component} from 'react'
 import stylesheet from './Modal.stylesheet'
 import {css,cx} from 'emotion'
+import customClassNames from './createCustomClassNames'
 
-function customClassNames(cls,name){
-    return cls.split(' ').reduce((res,cur)=>{
-        res && (res +=' ')
-        return res + cur + '__' + name
-    },'')
-}
 class ModalPresenter extends Component{
-    static defaultProps = {
-        mask: true,
-        keyboard: true,
-        open: false
-    }
     onClose=this.props.onClose
     handleOverlayClick=(e)=>{
         if(e.target == e.currentTarget){
@@ -22,8 +12,11 @@ class ModalPresenter extends Component{
     }
     overlayRef
     contentRef
-    componentDidUpdate(){
-        this.contentRef.focus()
+    componentDidMount(){
+        document.body.addEventListener('keyup',this.handleKeyup)
+    }
+    componentWillUnmount(){
+        document.body.removeEventListener('keyup',this.handleKeyup)
     }
     refOverlay= overlayRef =>{
         this.overlayRef = overlayRef
@@ -42,20 +35,20 @@ class ModalPresenter extends Component{
                 className,
                 headerChildren,
                 onClose,
-                mask,
-                keyboard,
-                open
+                open,
+                backClosable
               } = this.props;
         const overlayClassName = className && customClassNames(className,'overlay');
         const contentClassName = className && customClassNames(className,'content');
         const headerClassName = className && customClassNames(className,'header');
         const closeClassName = className && customClassNames(className,'close');
         const bodyClassName = className && customClassNames(className,'body');
-        const styles = stylesheet({open, mask})
+        const styles = stylesheet({open})
         return <div 
                  ref={this.refOverlay} 
                  className={cx(css(styles.overlay), overlayClassName)}
-                 onClick={keyboard ? this.handleOverlayClick : null}
+                 onClick={backClosable ? this.handleOverlayClick : null}
+                 
                >
                     <article 
                       ref={this.refContent} 
@@ -64,7 +57,7 @@ class ModalPresenter extends Component{
                       onKeyUp={this.handleKeyup}
                     >
                         <header className={cx(css(styles.header), headerClassName)}>
-                            {headerChildren ? headerChildren : 
+                            { headerChildren ? headerChildren : 
                                 <span>{title}</span>
                             }
                             <span className={cx(css(styles.close), closeClassName)} onClick={onClose}>×</span>

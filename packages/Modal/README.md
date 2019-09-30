@@ -40,7 +40,7 @@ import Modal from 'whd-modal';
 - `open` \(boolean\): Whether the modal is visible or not.
 - `className` \(string\): className of container.
 - `mask` \(boolean\): Whether show mask or not.
-- `maskClosable` \(boolean\):Whether to close the modal when the mask (area outside the modal) is clicked.
+- `backClosable` \(boolean\):Whether to close the modal when the area outside the modal is clicked.
 - `keyboard` \(boolean\): Whether support press esc to close.
 - `headerChildren` \(node\): Supports adding any dom content to the header of the modal.
 - `onClose` \(function\): Trigger when you click the close button.
