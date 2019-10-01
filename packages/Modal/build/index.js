@@ -9,8 +9,8 @@ var React__default = _interopDefault(React);
 var PropTypes = _interopDefault(require('prop-types'));
 var emotion = require('emotion');
 
-var _templateObject = _taggedTemplateLiteral(['\n                0% {top: 180px}\n                100% {top: 155px}\n                '], ['\n                0% {top: 180px}\n                100% {top: 155px}\n                ']),
-    _templateObject2 = _taggedTemplateLiteral(['\n                0% {top: 155px}\n                100% {top: 180px}\n                '], ['\n                0% {top: 155px}\n                100% {top: 180px}\n                ']);
+var _templateObject = _taggedTemplateLiteral(['\n                0% {top: 100px}\n                100% {top: 65px}\n                '], ['\n                0% {top: 100px}\n                100% {top: 65px}\n                ']),
+    _templateObject2 = _taggedTemplateLiteral(['\n                0% {top: 65px}\n                100% {top: 100px}\n                '], ['\n                0% {top: 65px}\n                100% {top: 100px}\n                ']);
 
 function _taggedTemplateLiteral(strings, raw) { return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
 
@@ -29,7 +29,6 @@ function stylesheet(props) {
             zIndex: 1040
         } : {},
         content: {
-            border: '1px solid #ccc',
             borderRadius: '4px',
             backgroundColor: 'rgb(255,255,255)',
             opacity: open ? 1 : 0,
@@ -38,12 +37,14 @@ function stylesheet(props) {
                 width: '300px'
             },
             position: 'absolute',
+            top: '100px',
             left: '50%',
-            top: '180px',
             transform: 'translateX(-50%)',
+            margin: '0 auto',
             transition: 'opacity ease 0.3s',
             animation: open ? opening + ' 0.4s' : closing + ' 0.4s',
-            outline: 0
+            outline: 0,
+            boxShadow: '0 1px 9px rgba(0,0,0,.5)'
         },
         header: {
             borderBottom: '1px solid #ccc',
@@ -62,7 +63,11 @@ function stylesheet(props) {
             cursor: 'pointer',
             fontWeight: '200',
             lineHeight: '17px',
-            fontSize: '35px'
+            fontSize: '35px',
+            color: 'rgba(0,0,0,0.45)',
+            '&:hover': {
+                color: 'rgba(0,0,0,0.85)'
+            }
         },
         mask: {
             position: 'fixed',
@@ -113,10 +118,6 @@ var ModalPresenter = function (_Component) {
             if (e.target == e.currentTarget) {
                 _this.onClose();
             }
-        }, _this.refOverlay = function (overlayRef) {
-            _this.overlayRef = overlayRef;
-        }, _this.refContent = function (contentRef) {
-            _this.contentRef = contentRef;
         }, _this.handleKeyup = function (e) {
             if (_this.props.keyboard && e.keyCode == 27) {
                 _this.onClose();
@@ -155,22 +156,17 @@ var ModalPresenter = function (_Component) {
             return React__default.createElement(
                 'div',
                 {
-                    ref: this.refOverlay,
                     className: emotion.cx(emotion.css(styles.overlay), overlayClassName),
                     onClick: backClosable ? this.handleOverlayClick : null
-
                 },
                 React__default.createElement(
                     'article',
                     {
-                        ref: this.refContent,
-                        tabIndex: '-1',
-                        className: emotion.cx(emotion.css(styles.content), contentClassName),
-                        onKeyUp: this.handleKeyup
-                    },
+                        className: emotion.cx(emotion.css(styles.content), contentClassName) },
                     React__default.createElement(
                         'header',
-                        { className: emotion.cx(emotion.css(styles.header), headerClassName) },
+                        {
+                            className: emotion.cx(emotion.css(styles.header), headerClassName) },
                         headerChildren ? headerChildren : React__default.createElement(
                             'span',
                             null,
@@ -178,13 +174,16 @@ var ModalPresenter = function (_Component) {
                         ),
                         React__default.createElement(
                             'span',
-                            { className: emotion.cx(emotion.css(styles.close), closeClassName), onClick: onClose },
+                            {
+                                className: emotion.cx(emotion.css(styles.close), closeClassName),
+                                onClick: onClose },
                             '\xD7'
                         )
                     ),
                     React__default.createElement(
                         'div',
-                        { className: emotion.cx(emotion.css(styles.body), bodyClassName) },
+                        {
+                            className: emotion.cx(emotion.css(styles.body), bodyClassName) },
                         children
                     )
                 )

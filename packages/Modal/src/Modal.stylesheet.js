@@ -1,12 +1,12 @@
 import {keyframes} from 'emotion'
 
 const closing = keyframes`
-                0% {top: 180px}
-                100% {top: 155px}
+                0% {top: 100px}
+                100% {top: 65px}
                 `
 const opening = keyframes`
-                0% {top: 155px}
-                100% {top: 180px}
+                0% {top: 65px}
+                100% {top: 100px}
                 `              
 function stylesheet(props){
     const {open} = props
@@ -20,7 +20,6 @@ function stylesheet(props){
             zIndex: 1040
         } : {},
         content:{
-            border: '1px solid #ccc',
             borderRadius: '4px',
             backgroundColor: 'rgb(255,255,255)',
             opacity: open ? 1 : 0,
@@ -29,12 +28,14 @@ function stylesheet(props){
                 width: '300px'
             },
             position: 'absolute',
+            top: '100px',
             left: '50%',
-            top: '180px',
             transform: 'translateX(-50%)',
+            margin: '0 auto',
             transition: 'opacity ease 0.3s',
             animation: open ? `${opening} 0.4s` : `${closing} 0.4s`,
-            outline: 0
+            outline: 0,
+            boxShadow: '0 1px 9px rgba(0,0,0,.5)'
         },
         header:{
             borderBottom: '1px solid #ccc',
@@ -53,7 +54,11 @@ function stylesheet(props){
             cursor: 'pointer',
             fontWeight: '200',
             lineHeight: '17px',
-            fontSize: '35px'
+            fontSize: '35px',
+            color: 'rgba(0,0,0,0.45)',
+            '&:hover':{
+                color: 'rgba(0,0,0,0.85)'
+            }
         },
         mask: {
             position: 'fixed',

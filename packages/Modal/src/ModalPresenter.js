@@ -10,19 +10,11 @@ class ModalPresenter extends Component{
             this.onClose()
         }
     }
-    overlayRef
-    contentRef
     componentDidMount(){
         document.body.addEventListener('keyup',this.handleKeyup)
     }
     componentWillUnmount(){
         document.body.removeEventListener('keyup',this.handleKeyup)
-    }
-    refOverlay= overlayRef =>{
-        this.overlayRef = overlayRef
-    }
-    refContent=contentRef=>{
-        this.contentRef = contentRef
     }
     handleKeyup=(e)=>{
         if(this.props.keyboard && e.keyCode==27){
@@ -45,24 +37,22 @@ class ModalPresenter extends Component{
         const bodyClassName = className && customClassNames(className,'body');
         const styles = stylesheet({open})
         return <div 
-                 ref={this.refOverlay} 
                  className={cx(css(styles.overlay), overlayClassName)}
                  onClick={backClosable ? this.handleOverlayClick : null}
-                 
                >
                     <article 
-                      ref={this.refContent} 
-                      tabIndex='-1' 
-                      className={cx(css(styles.content), contentClassName)} 
-                      onKeyUp={this.handleKeyup}
-                    >
-                        <header className={cx(css(styles.header), headerClassName)}>
+                      className={cx(css(styles.content), contentClassName)}>
+                        <header 
+                          className={cx(css(styles.header), headerClassName)}>
                             { headerChildren ? headerChildren : 
                                 <span>{title}</span>
                             }
-                            <span className={cx(css(styles.close), closeClassName)} onClick={onClose}>×</span>
+                            <span 
+                              className={cx(css(styles.close), closeClassName)} 
+                              onClick={onClose}>×</span>
                         </header>
-                        <div className={cx(css(styles.body), bodyClassName)}>
+                        <div 
+                          className={cx(css(styles.body), bodyClassName)}>
                             {children}
                         </div>
                     </article>

@@ -27,7 +27,7 @@ import Modal from 'whd-modal';
     onClose={this.onClose}
     mask={true}
     keyboard={false}
-    maskClosable={false}
+    backClosable={false}
 >
     <p> 
         A modal is an overlay that focuses the customer's attention on a single task or set of controls. 
